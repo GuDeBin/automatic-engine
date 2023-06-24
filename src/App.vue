@@ -26,4 +26,13 @@ const { isSupported, isListening, isFinal, result, start, stop } =
 if (!isSupported.value) {
   alert("SpeechRecognition API not supported!");
 }
+
+// 三十秒不说话自动结束
+watch(isListening, (value) => {
+  if (value) {
+    setTimeout(() => {
+      stop();
+    }, 30000);
+  }
+});
 </script>
